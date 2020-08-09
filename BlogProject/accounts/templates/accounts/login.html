@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-outer">
+
+    <div id="page-content" class="row page">
+
+       <div id="primary" class="eight columns">
+           <section>
+                <h1>Login</h1>
+                <form action="{% url 'accounts:login' %}" method="post">
+                    {% csrf_token %}
+                    {{form}}
+                    {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{request.GET.next}}">
+                    {% endif %}
+                    <input type="submit" value="Login">
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-outer">
+
+    <div id="page-content" class="row page">
+
+       <div id="primary" class="eight columns">
+           <section>
+                <h1>Signup!</h1>
+                <form action="{% url 'accounts:signup' %}" method="post">
+                    {% csrf_token %}
+                    {{form}}
+                    <input type="submit" value="Signup">
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+

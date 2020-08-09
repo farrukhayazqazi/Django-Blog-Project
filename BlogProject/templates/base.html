@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en"> 
+<head>
+
+   <!--- Basic Page Needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>Sparrow - Free Responsive HTML5/CSS3 Template</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+   <!-- Mobile Specific Metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+    ================================================== -->
+   <link rel="stylesheet" href='{% static "css/default.css" %}'>
+   <link rel="stylesheet" href='{% static "css/layout.css" %}'>
+   <link rel="stylesheet" href='{% static "css/media-queries.css" %}'>
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ 
+
+   <!-- Script
+   ================================================== -->
+	<script src='{ % static "js/modernizr.js" % }'></script>
+
+   <!-- Favicons
+	================================================== -->
+   <link rel="shortcut icon" href='{ % "favicon.ico" % }' > 
+</head>
+
+<body>
+
+   <!-- Header
+   ================================================== -->
+   <header>
+
+      <div class="row">
+
+         <div class="twelve columns">
+
+            <div class="logo">
+               <a  href="{% url 'index' %}"><img alt="" src='{% static "images/logo.png" %}'></a>
+            </div>
+
+            <nav id="nav-wrap">
+
+               <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+	            <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+               <ul id="nav" class="nav">
+
+	               <li class="current"><a href="{% url 'index' %}">Home</a></li>
+	               <li>
+                     <span><a href="{% url 'blogs:blog_post' %}">Blog</a></span>
+                     <ul>
+                        <li><a href="{% url 'blogs:blog_post' %}">Blog Index</a></li>
+                        <li><a href="{% url 'blogs:blog_create' %}">Post</a></li>
+                     </ul>
+                  </li>
+
+	               <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="{% url 'contact' %}">Contact</a></li>
+                  
+                  {% if user.is_authenticated %}
+                     <li>
+                        <form class='logout-link' action="{% url 'accounts:logout' %}" method="post">
+
+                           {% csrf_token %}
+                           <div class="w3-container" >
+                              <p>
+                                 <button class="w3-btn w3-no w3-border w3-round-large" type="submit">Logout</button>
+                                 
+                              </p>
+                           </div>
+                  {% else %}
+                     <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                     <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+                  {% endif %}
+                        </form>
+                     </li>
+                  
+               </ul> <!-- end #nav -->
+
+            </nav> <!-- end #nav-wrap -->
+
+         </div>
+
+      </div>
+
+   </header> <!-- Header End -->
+
+<div class="wrapper">
+   {% block content %}
+   {% endblock %}
+</div>
+
+   <!-- footer
+   ================================================== -->
+   <footer>
+
+      <div class="row">
+
+         <div class="twelve columns">
+
+            <ul class="footer-nav">
+					<li><a href="#">Home.</a></li>
+              	<li><a href="#">Blog.</a></li>
+              	<li><a href="#">Portfolio.</a></li>
+              	<li><a href="#">About.</a></li>
+              	<li><a href="#">Contact.</a></li>
+               <li><a href="#">Features.</a></li>
+			   </ul>
+
+            <ul class="footer-social">
+               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+               <li><a href="#"><i class="fa fa-skype"></i></a></li>
+               <li><a href="#"><i class="fa fa-rss"></i></a></li>
+            </ul>
+
+            <ul class="copyright">
+               <li>Copyright &copy; 2014 Sparrow</li> 
+               <li>Design by <a href="http://www.styleshout.com/">Styleshout</a></li>               
+            </ul>
+
+         </div>
+
+         <div id="go-top" style="display: block;"><a title="Back to Top" href="#">Go To Top</a></div>
+
+      </div>
+
+   </footer> <!-- Footer End-->
+
+   <!-- Java Script
+   ================================================== -->
+   <script src='{ % static "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" % }'></script>
+   <script>window.jQuery || document.write('<script src={ % static "js/jquery-1.10.2.min.js % }"><\/script>')</script>
+   <script type="text/javascript" src='{ % static "js/jquery-migrate-1.2.1.min.js" % }'></script>
+
+   <script src='{ % static "js/jquery.flexslider.js" % }'></script>
+   <script src='{ % static "js/doubletaptogo.js" % }'></script>
+   <script src='{ % static "js/init.js" % }'></script>
+
+</body>
+
+</html>
